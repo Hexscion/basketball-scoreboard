@@ -28,6 +28,7 @@ function start() {
     now = new Date()
     countdown = new Date(now.getTime() + 10 * 60000)
     x = setInterval(timer,100)
+    document.getElementById("start-btn").disabled = true
 }
 
 function reset() {
@@ -54,9 +55,9 @@ function timer() {
     timerS = difference.getUTCSeconds()
     if (timerM<=0 && timerS<=0) {
         clearInterval(x)
+        document.getElementById("start-btn").disabled = false
     }
     document.getElementById("timer").textContent = (timerM<10?"0":"") + timerM + ":" + (timerS<10?"0":"") + timerS
-    document.getElementById("start-btn").disabled = true
     if (homeScore>guestScore) {
         document.getElementById("home-score").style.color = "green"
         document.getElementById("guest-score").style.color = "red"
